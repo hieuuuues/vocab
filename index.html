@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcard System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <!-- Main Page -->
+      <div class="container" id="main-page">
+        <h1>Học Lặp Lại Ngắt Quãng</h1>
+        <button id="reset-button" onclick="resetApplication()">Reset</button>
+
+        <input
+          type="text"
+          id="vocab-input"
+          placeholder="Nhập từ tiếng Anh..."
+        />
+        <input
+          type="text"
+          id="meaning-input"
+          placeholder="Nhập nghĩa tiếng Việt..."
+        />
+        <button onclick="addVocabulary()">Thêm từ vựng</button>
+
+        <div class="vocabulary-section">
+          <h2>Từ vựng của bạn</h2>
+          <p id="learned-count">0 từ</p>
+          <button onclick="openFlashcard()">Học với Flashcard</button>
+          <button onclick="startMatching()">Chơi Matching</button>
+          <button onclick="startScramblePractice()">
+            Luyện viết từ xáo trộn
+          </button>
+        </div>
+      </div>
+
+      <!-- Flashcard Page -->
+      <div class="container" id="flashcard-page" style="display: none">
+        <div id="flashcard" class="flashcard">
+          <div class="front">
+            <h2 id="vocab-word"></h2>
+            <button onclick="playCurrentAudio()" class="audio-btn">🔊</button>
+          </div>
+          <div class="back">
+            <h2 id="vocab-meaning"></h2>
+          </div>
+        </div>
+        <div class="controls">
+          <button onclick="prevFlashcard()">Previous</button>
+          <button onclick="nextFlashcard()">Next</button>
+          <button onclick="goBack()">Quay lại</button>
+        </div>
+      </div>
+
+      <!-- Matching Game Page -->
+      <div id="matching-page" style="display: none">
+        <h2>Trò chơi Matching</h2>
+        <div id="matching-container"></div>
+        <button onclick="goBack()">Quay lại</button>
+      </div>
+
+      <!-- Scramble Game Page -->
+      <div id="learned-scramble-page" style="display: none">
+        <h2>Luyện tập với từ xáo trộn</h2>
+        <div id="scrambled-words-container"></div>
+        <button onclick="checkAllUnscrambledWords()">Kiểm tra</button>
+        <div id="scramble-result"></div>
+        <button onclick="goBack()">Quay lại</button>
+      </div>
+
+      <!-- Statistics Page -->
+      <div id="stats-page" style="display: none">
+        <h2>Thống kê học tập</h2>
+        <canvas id="progressChart" width="400" height="400"></canvas>
+        <button onclick="goBack()">Quay lại</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
